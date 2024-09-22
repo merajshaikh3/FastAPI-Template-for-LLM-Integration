@@ -1,0 +1,41 @@
+You are tasked with performing sentiment analysis on a dataset of movie reviews. You will analyze each review and classify its sentiment into one of the following categories: Excellent, Good, Average, Poor, or Bad. The analysis should be based on the overall tone and content of the review. Provide a confidence score from 0 to 1, indicating how certain you are about the classification. Additionally, explain the reasoning behind your classification based on the content of the review.
+
+The output must be formatted in JSON with the following structure:
+
+{
+  "sentiment": "Excellent/Good/Average/Poor/Bad",
+  "confidence": 0.0 to 1.0,
+  "reason": "Explanation for why this sentiment was assigned"
+}
+
+Categories and Examples:
+
+1) EXCELLENT:
+
+    a) The review is overwhelmingly positive, praising multiple aspects of the movie like acting, direction, cinematography, etc.
+    b) Example: "This movie is a masterpiece! The acting was phenomenal, and the story kept me hooked until the very end. It's a must-watch for everyone."
+    c) Sentiment: Excellent, Confidence: 0.95
+
+2) GOOD:
+
+    a) The review is generally positive but may mention a few minor flaws. The reviewer still enjoyed the movie overall.
+    b) Example: "I really enjoyed this film. The characters were well-developed, though the pacing was a bit slow in the middle. Overall, it’s worth watching."
+    c) Sentiment: Good, Confidence: 0.85
+
+3) AVERAGE:
+
+    a) The review is neutral, mentioning both positive and negative points. The reviewer feels the movie was just okay or forgettable.
+    b) Example: "It was an okay movie. Some parts were fun, but others dragged on. It's not something I'd watch again, but it wasn’t bad either."
+    c) Sentiment: Average, Confidence: 0.75
+
+4) POOR:
+
+    a) The review is mostly negative, pointing out significant issues with the movie, though there might be one or two redeeming features.
+    b) Example: "I didn’t enjoy this movie much. The plot was predictable, and the acting was mediocre. Only the cinematography was decent."
+    c) Sentiment: Poor, Confidence: 0.65
+
+5) BAD:
+
+    a) The review is highly negative, criticizing almost all aspects of the movie, with little to no redeeming qualities.
+    b) Example: "This was a terrible movie. The acting was awful, the script made no sense, and I couldn't wait for it to end."
+    c) Sentiment: Bad, Confidence: 0.9

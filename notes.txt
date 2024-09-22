@@ -1,0 +1,246 @@
+- Need to upload image to Docker hub (change `build` to `image`)
+- See how to run a docker container on digital ocean
+- Do you need to persist any data if the container shuts down unexpectedly? (don't think so)
+- How to restart application if it dies during production
+- Does Docker need any additional security in production? 
+
+
+
+
+
+
+
+
+
+
+
+
+Previous Sentiment
+High Risk
+------------------------------------------------------------
+Key: request_id
+Value: sDSJDJccnncncncnc
+Data Type of Value: <class 'str'>
+------------------------------------------------------------
+Key: channel_id
+Value: C21334343
+Data Type of Value: <class 'str'>
+------------------------------------------------------------
+Key: analysis_timestamp
+Value: 2024-08-31T12:32:23.718073
+Key: channel_id
+Value: C21334343
+Data Type of Value: <class 'str'>
+------------------------------------------------------------
+Key: analysis_timestamp
+Value: 2024-08-31T12:32:23.718073
+Value: 2024-08-31T12:32:23.718073
+Data Type of Value: <class 'str'>
+Data Type of Value: <class 'str'>
+------------------------------------------------------------
+------------------------------------------------------------
+Key: prev_analysis
+Value: {'last_ai_timestamp': '2024-08-31T12:32:23.718073', 'prev_sentiment': 'High Risk', 'ai_model_used': True}
+Data Type of Value: <class 'dict'>
+Data Type of Value: <class 'dict'>
+------------------------------------------------------------
+Key: messages
+Value: [{'sent_by_email': 'guest@xyz.com', 'timestamp': '2024-08-31T12:32:23.718073', 'message': 'Hi, this is message 1'}, {'sent_by_email': 'abc@bluesensedigital.com.au', 'timestamp': '2024-08-31T12:32:23.718073', 'message': 'Hi, this is message 2'}, {'sent_by_email': 'guest@xyz.com', 'timestamp': '2024-08-31T12:32:23.718073', 'message': 'Hi, this is message 3'}, {'sent_by_email': 'abc@bluesensedigital.com.au', 'timestamp': '2024-08-31T12:32:23.718073', 'message': 'Hi, this is message 4'}, {'sent_by_email': 'abc@bluesensedigital.com.au', 'timestamp': '2024-08-31T12:32:23.718073', 'message': 'Hi, this is message 5'}]
+Data Type of Value: <class 'list'>
+------------------------------------------------------------
+INFO:     127.0.0.1:61283 - "POST /api/v1/sentiment/ HTTP/1.1" 201 Created
+WARNING:  WatchFiles detected changes in 'helper.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+
+
+
+Things to do:
+
+1) Club all the code into a utils.py file
+2) Need to add a secret token for verification
+3) Add error codes for the following:
+    - data format is incorrect
+    - user is not authorized (secret code is incorrect)
+    - output from openai model is incorrect
+
+
+
+Example: Positive
+
+
+{
+    "request_id": "sDSJDJccnncncncnc",
+    "channel_id": "C21334343",
+    "analysis_timestamp": "2024-08-31 12:32:23.718073",
+    "prev_analysis" : {
+        "prev_ai_timestamp": "2024-09-11 12:32:23.718073",
+        "prev_sentiment": "Neutral",
+        "ai_model_used": true
+    },
+    "messages": [
+      {
+        "sent_by_email": "brittanygarrett@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Good morning\n@Chloe Campbell\nSorry got distracted from us talking about LOTR vs HP !\nAmazing thank you I'll set you up with all info and the spreadsheet (because I know how much you love them...)\nThe new graphics looks great !! For Ad 2 is there a 1x1 Square version of these as well?\nAlso Happy August ! Great to see an increase of 20% for Online Sales for July compared to June - keen to kick more goals together :slightly_smiling_face: :bin_your_rubbish:"
+      }
+    ]
+  }
+
+  
+
+Example: Neutral
+
+
+{
+    "request_id": "sDSJDJccnncncncnc",
+    "channel_id": "C21334343",
+    "analysis_timestamp": "2024-08-31 12:32:23.718073",
+    "prev_analysis" : {
+        "prev_ai_timestamp": "2024-09-11 12:32:23.718073",
+        "prev_sentiment": "Neutral",
+        "ai_model_used": true
+    },
+    "messages": [
+      {
+        "sent_by_email": "matt@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi Harry, Mark is busy I think but I can do around 3pm. Does that work?"
+      },
+      {
+        "sent_by_email": "harry@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": " Yep for sure, sounds good\n@Matt!"
+      },
+      {
+        "sent_by_email": "mark@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "I can prob do 3\nBut will see otherwise Matt can fill me in"
+      },
+      {
+        "sent_by_email": "harry@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Sweet!"
+      }
+    ]
+  }
+
+
+Example: Low Risk
+
+
+{
+    "request_id": "sDSJDJccnncncncnc",
+    "channel_id": "C21334343",
+    "analysis_timestamp": "2024-08-31 12:32:23.718073",
+    "prev_analysis" : {
+        "prev_ai_timestamp": "2024-09-11 12:32:23.718073",
+        "prev_sentiment": "Neutral",
+        "ai_model_used": true
+    },
+    "messages": [
+      {
+        "sent_by_email": "robjohnson@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": ""Hi\n@Harry Liptak\nThanks for that, just want to note that maybe 'Mini's' at the top shouldn't have the apostrophe. Also, no zippers on Throws. I'm sure\n@Bec Johnson\nwill contact you as well.\nCheers,\nRob J""
+      }
+    ]
+  }
+
+
+Example: High Risk - 1
+
+
+{
+    "request_id": "sDSJDJccnncncncnc",
+    "channel_id": "C21334343",
+    "analysis_timestamp": "2024-08-31 12:32:23.718073",
+    "prev_analysis" : {
+        "prev_ai_timestamp": "2024-09-11 12:32:23.718073",
+        "prev_sentiment": "Neutral",
+        "ai_model_used": true
+    },
+    "messages": [
+      {
+        "sent_by_email": "matt@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi Harry, Do you want me to wait some more time before Upping the price of the WDT Tamper? Obviously CAC has blown out and conversions rates have dipped drastically. But do we need to wait to see if they are going to stabilize? (Cnv down 28% since we raised the threshold).\nI would like to Increase the WDT tamper price to $89. With the dosing funnel add on the price would be $112 which after the Joe10 discount would mean the customer still gets the free shipping threshold and feels like they are getting a deal.\nLet me know your thoughts. But there has definitely been a huge drop in WDT tampers sold. Down 40% since we upped the threshold."
+      }
+    ]
+  }
+
+
+Example: High Risk - 2
+
+
+{
+    "request_id": "sDSJDJccnncncncnc",
+    "channel_id": "C21334343",
+    "analysis_timestamp": "2024-08-31 12:32:23.718073",
+    "prev_analysis" : {
+        "prev_ai_timestamp": "2024-09-11 12:32:23.718073",
+        "prev_sentiment": "High Risk",
+        "ai_model_used": true
+    },
+    "messages": [
+      {
+        "sent_by_email": "harry@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Let me set up some time for the evening."
+      }
+    ]
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sample:
+{
+    "request_id": "sDSJDJccnncncncnc",
+    "channel_id": "C21334343",
+    "analysis_timestamp": "2024-08-31 12:32:23.718073",
+    "prev_analysis" : {
+        "last_ai_timestamp": "2024-09-11 12:32:23.718073",
+        "prev_sentiment": "High Risk",
+        "ai_model_used": true
+    },
+    "messages": [
+      {
+        "sent_by_email": "guest@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 1"
+      },
+      {
+        "sent_by_email": "abc@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 2"
+      },
+      {
+        "sent_by_email": "guest@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "I expected so much more from you'll!"
+      },
+      {
+        "sent_by_email": "abc@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 4"
+      },
+      {
+        "sent_by_email": "abc@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 5"
+      }
+    ]
+  }

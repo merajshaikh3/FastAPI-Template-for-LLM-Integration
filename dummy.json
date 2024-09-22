@@ -1,0 +1,37 @@
+{
+    "request_id": "sDSJDJccnncncncnc",
+    "channel_id": "C21334343",
+    "analysis_timestamp": "2024-08-31 12:32:23.718073",
+    "prev_analysis" : {
+        "last_ai_timestamp": "2024-08-31 12:32:23.718073",
+        "prev_sentiment": "High Risk",
+        "ai_model_used": true
+    },
+    "messages": [
+      {
+        "sent_by_email": "guest@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 1"
+      },
+      {
+        "sent_by_email": "abc@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 2"
+      },
+      {
+        "sent_by_email": "guest@xyz.com",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 3"
+      },
+      {
+        "sent_by_email": "abc@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 4"
+      },
+      {
+        "sent_by_email": "abc@bluesensedigital.com.au",
+        "timestamp": "2024-08-31 12:32:23.718073",
+        "message": "Hi, this is message 5"
+      }
+    ]
+  }
